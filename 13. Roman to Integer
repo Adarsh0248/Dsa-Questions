@@ -1,0 +1,39 @@
+//https://leetcode.com/problems/roman-to-integer/
+class Solution {
+     public int Roman(char s){
+        int I=1;
+        int V=5;
+        int X=10;
+        int L = 50;
+        int C = 100;
+        int D = 500;
+        int M = 1000;
+        if(s=='I')
+            return I;
+        else if (s=='V') {
+            return V;
+        }else if (s=='X') {
+            return X;
+        }else if (s=='L') {
+            return L;
+        }else if (s=='C') {
+            return C;
+        } else if (s=='D') {
+            return D;
+        }
+        else 
+            return M;
+    }
+    public int romanToInt(String s) {
+        if (s.length()==1)
+            return Roman(s.charAt(0));
+        if(s.charAt(0)=='I'&&(s.charAt(1)=='V'||s.charAt(1)=='X'))
+            return romanToInt(s.substring(1))-Roman(s.charAt(0));
+        if(s.charAt(0)=='X'&&(s.charAt(1)=='L'||s.charAt(1)=='C'))
+            return romanToInt(s.substring(1))-Roman(s.charAt(0));
+        if(s.charAt(0)=='C'&&(s.charAt(1)=='D'||s.charAt(1)=='M'))
+            return romanToInt(s.substring(1))-Roman(s.charAt(0));
+        return Roman(s.charAt(0))+romanToInt(s.substring(1));
+    
+    }
+}
