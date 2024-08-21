@@ -1,0 +1,21 @@
+//https://leetcode.com/problems/find-all-duplicates-in-an-array/description/
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        int i=0;
+         while(i<nums.length){
+            int pos = nums[i]-1;
+            if(nums[i]!=nums[pos]){
+                 int temp = nums[pos];
+                 nums[pos]=nums[i];
+                 nums[i]=temp;
+            } else i++;
+        }
+        for(int j =0;j<nums.length;j++){
+            if(nums[j]!=j+1){
+                ans.add(nums[j]);
+            }
+        }
+        return ans;
+    }
+}
