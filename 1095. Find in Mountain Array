@@ -1,0 +1,56 @@
+//https://leetcode.com/problems/find-in-mountain-array/
+/**
+ * // This is MountainArray's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface MountainArray {
+ *     public int get(int index) {}
+ *     public int length() {}
+ * }
+ */
+ 
+class Solution {
+   
+    public int findInMountainArray(int target, MountainArray mountainArr) {
+        int u=0,v=mountainArr.length()-1;
+        int peak=0;
+        int k = u + (v-u)/2;
+        while (u<=v){
+             k = u + (v-u)/2;
+             if(mountainArr.get(k)>mountainArr.get(k+1)&& mountainArr.get(k)>mountainArr.get(k-1))
+             { 
+                peak =k;
+             break;
+             }
+             else if(mountainArr.get(k)<mountainArr.get(k+1)) u= k+1;
+             else v = k-1;
+        }
+        if(mountainArr.get(peak)<target) return -1;
+        int ans = -1,s=0,e=peak;
+        int a = e+1, b = mountainArr.length()-1;
+        int m = s + (e-s)/2;
+        while (s<= e){
+             m = s + (e-s)/2;
+            if(mountainArr.get(m)==target) {
+                ans = m;
+                break;
+                }
+            else if(mountainArr.get(m)<target) s= m+1;
+            else e= m-1;
+            }
+            if(ans == -1){
+                while(a<=b){
+                     m = a + (b-a)/2;
+            if(mountainArr.get(m)==target) {
+                ans = m;
+                break;
+                }
+            else if(mountainArr.get(m)<target) b= m-1;
+            else a= m+1;
+
+                }
+            }
+            return ans;
+
+        
+    }
+}
