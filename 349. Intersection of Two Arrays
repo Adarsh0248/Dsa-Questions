@@ -1,0 +1,23 @@
+//https://leetcode.com/problems/intersection-of-two-arrays/description/
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        int [] freq = new int [1001];
+        int [] ans = new int [  1001];
+        for(int a:nums1){
+            freq[a]=-1;
+        }
+        int j =0;
+        for(int a:nums2){
+            if(freq[a]==-1){
+                freq[a]=1;
+                ans[j++]=a;
+            }
+        }
+        int [] org = new int[j];
+       
+        for(int i =0;i<org.length;i++){
+            org[i]=ans[i];
+        }
+        return org;
+    }
+}
