@@ -1,0 +1,21 @@
+//https://leetcode.com/problems/house-robber/
+public class Solution {
+    public static int rob1(int[] nums,int idx,int sum) {
+        if(nums.length==2)
+        return Math.max(nums[idx],nums[idx+1]);
+        if(idx==nums.length-1) return sum +nums[nums.length-1];
+        if(idx==nums.length-2){
+            return sum + Math.max(nums[idx],nums[idx+1]);
+        } 
+        int sum1=rob1(nums,idx+2,sum+nums[idx]);
+        int sum2 = rob1(nums,idx+1,sum);
+        if(sum1>sum2)
+        return sum1;
+        return sum2;
+
+    }
+    public int rob(int[] nums) {
+       return rob1(nums,0,0);
+
+    }
+}
