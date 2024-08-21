@@ -1,0 +1,60 @@
+// https://leetcode.com/problems/integer-to-roman/
+class Solution {
+     public static String intToRomanBy1(int n){
+        String ans;
+        return switch (n) {
+            case 1 -> ans = "I";
+            case 2 -> ans = "II";
+            case 3 -> ans = "III";
+            case 4 -> ans = "IV";
+            case 5 -> ans = "V";
+            case 6 -> ans = "VI";
+            case 7 -> ans = "VII";
+            case 8 -> ans = "VIII";
+            case 9 -> ans = "IX";
+            default -> ans = "";
+        };
+    }
+    public static String intToRomanBy10(int n){
+        String ans;
+        return switch (n) {
+            case 1 -> ans = "X";
+            case 2 -> ans = "XX";
+            case 3 -> ans = "XXX";
+            case 4 -> ans = "XL";
+            case 5 -> ans = "L";
+            case 6 -> ans = "LX";
+            case 7 -> ans = "LXX";
+            case 8 -> ans = "LXXX";
+            case 9 -> ans = "XC";
+            default -> ans = "";
+        };
+    }
+    public static String intToRomanBy100(int n){
+        String ans;
+        return switch (n) {
+            case 1 -> ans = "C";
+            case 2 -> ans = "CC";
+            case 3 -> ans = "CCC";
+            case 4 -> ans = "CD";
+            case 5 -> ans = "D";
+            case 6 -> ans = "DC";
+            case 7 -> ans = "DCC";
+            case 8 -> ans = "DCCC";
+            case 9 -> ans = "CM";
+            default -> ans = "";
+        };
+    }
+    public static String intToRomanBy1000(int n){
+        String ans;
+        return switch (n) {
+            case 1 -> ans = "M";
+            case 2 -> ans = "MM";
+            case 3 -> ans = "MMM";
+            default -> ans = "";
+        };
+    }
+    public String intToRoman(int n) {
+        return intToRomanBy1000(n/1000)+intToRomanBy100((n%1000)/100)+intToRomanBy10(((n%1000)%100)/10)+intToRomanBy1((((n%1000)%100)%10));
+    }
+}
