@@ -1,0 +1,18 @@
+//https://leetcode.com/problems/valid-perfect-square/description/
+class Solution {
+    public boolean isPerfectSquare(int num) {
+         if (num ==1) return true;
+        int l = 0, h = num/2, mid = 0;
+        while (l <= h) {
+            mid = l + (h - l) / 2;
+            long pow = (long)mid * mid;
+            if (pow == num)
+                return true;
+            else if (pow < num)
+                l = mid + 1;
+            else
+                h = mid - 1;
+        }
+        return false;
+    }
+}
